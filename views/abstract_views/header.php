@@ -22,16 +22,16 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,100' rel='stylesheet' type='text/css'>
 
     <!--CSS-->
-    <link rel="stylesheet" href="is218_project_3/style.css" type="text/css" >
+    <link rel="stylesheet" href="https://web.njit.edu/~ak659/style.css" type="text/css" >
 
 </head>
 
 <body id="home_page">
 
-//Top bar menu
+<!-- Top bar menu -->
 <div class="navbar">
     <nav id="nav_menu">
-        <a href="index.html">
+        <a href="https://web.njit.edu/~ak659/index.html">
             <img src="images/logo1.jpg" alt = "Axel Kouassi Personal Logo" id = "logo"></a>
         <a href="registration.php"class ="right_align">Register</a>
         <a href="login.php" class ="right_align">Login</a>
