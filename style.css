@@ -1,0 +1,104 @@
+/* Home Page - index.html*/
+
+#home_page {
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;}
+
+#logo{
+    max-height: 60px;
+    height: auto;
+    max-width: 100%;
+    border: 0;
+    vertical-align: middle;
+    padding-left:90px;
+    float: left;
+}
+
+#nav_menu {
+    margin : 0;
+    top: 0;
+    position: fixed;
+    background-color: #6F31A0;/*#5F0A87;*/
+    width:100%;
+    overflow: auto;}
+
+#nav_menu a{
+
+    color: white /*#5F0A87*/;
+    font-size: 20px;
+}
+
+.right_align{
+    float: right;
+    padding: 15px 45px;
+}
+
+#picture{
+    width: 100%;
+    height: auto;
+    overflow: hidden;}
+
+/* Give purple color to button*/
+.btn{
+    color: #6F31A0;
+}
+
+/* Give purple color to all h1 elements*/
+h1{
+    color: #6F31A0;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.navbar{
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.form, footer  {
+    max-width: 400px;
+    padding: 15px;
+    margin: 0 auto;
+    position: relative;
+    height: auto;
+    font-size: 16px;
+    /*
+
+    position: relative;*/
+}
+
+
+
+btn btn-default btn-block{
+    background-color: #6F31A0;}
+
+
+/* Display_Login.php */
+h2{
+    color: red;
+    margin-bottom: 0;
+    padding-bottom: 0;}
+
+table{
+    border: solid 1px black;
+    margin-top: 0;
+    padding-bottom: 0;}
+
+th{
+    width:200px;
+    height: 30px;
+    padding-left: 5px;
+    border:1px solid black;}
+
+td{
+    width:200px;
+    height: 30px;
+    border:1px solid black;
+    padding-left: 5px;}
+
+.display{
+    margin: 30px;
+}
+
+
