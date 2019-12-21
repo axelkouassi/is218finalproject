@@ -89,6 +89,25 @@ switch ($action) {
         break;
     }
 
+    // Delete user's questions, first and last name
+    case 'delete_question':{
+        $userId = filter_input(INPUT_GET, 'userId');
+        $firstName = filter_input(INPUT_GET, 'fname');
+        $lastName = filter_input(INPUT_GET, 'lname');
+
+        $question_id = filter_input(INPUT_POST, 'question_id', FILTER_VALIDATE_INT);
+        $userId = filter_input(INPUT_POST, 'userId', FILTER_VALIDATE_INT);
+        if ($question_id == NULL || $question_id == FALSE ||
+            $userId == NULL || $userId == FALSE) {
+            $error = "Missing or incorrect question id or user id.";
+            include('errors/errors/error.php');
+        } else {
+            $delete_question = delete_question($question_id,$userId);
+            header("Location: .?action=display_questions&userId=$userId&fname=$firstName&lname=$lastName");
+        }
+        break;
+    }
+
 
     //Display of question form
     case 'display_question_form':
@@ -116,7 +135,7 @@ switch ($action) {
             $error = "Fields cannot be empty.";
             include('errors/error.php');
         } else {
-            $newQuestion = create_question($question_name, $question_body, $question_skills);
+            $newQuestion = create_question($userId, $question_name, $question_body, $question_skills);
             echo "User ID IS: $userId";
             if ($userId == false) {
                 header("Location: .?action=display_login");
