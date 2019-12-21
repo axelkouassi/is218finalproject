@@ -19,30 +19,63 @@ switch ($action) {
         break;
     }
 
-    //Login credentials
-    case 'login': {
-    $email = filter_input(INPUT_POST, 'email_address');
-    $password = filter_input(INPUT_POST, 'password');
 
-    if ($email == NULL || $password == NULL) {
-        $error = "Email and Password not included.";
-        include('errors/error.php');
-    } else {
-        $userId = get_user($email, $password);
-        $firstName = return_fname($email, $password);
-        $lastName = return_lname($email, $password);
-        echo "User ID IS: $userId";
-        if ($userId == false) {
-            header("Location: .?action=display_registration");
+    //Login credentials
+    case 'login':
+    {
+        $email = filter_input(INPUT_POST, 'email_address');
+        $password = filter_input(INPUT_POST, 'password');
+
+        if ($email == NULL || $password == NULL) {
+            $error = "Email and Password not included.";
+            include('errors/error.php');
         } else {
-            header("Location: .?action=display_questions&userId=$userId&fname=$firstName&lname=$lastName");
+            $userId = get_user($email, $password);
+            $firstName = return_fname($email, $password);
+            $lastName = return_lname($email, $password);
+            echo "User ID IS: $userId";
+            if ($userId == false) {
+                header("Location: .?action=display_registration");
+            } else {
+                header("Location: .?action=display_questions&userId=$userId&fname=$firstName&lname=$lastName");
+            }
         }
+
+        break;
     }
 
-    break;
-}
+    // Display registration form
+    case 'display_registration': {
+        include('views/registration.php');
+        break;
+    }
 
-    case 'display_questions': {
+    //Register
+    case 'register': {
+        // Getting input data from users
+        $first_name = filter_input(INPUT_POST,'first_name');
+        $last_name = filter_input(INPUT_POST,'last_name');
+        $birthday = filter_input(INPUT_POST,'birthday');
+        $email = filter_input(INPUT_POST,'email');
+        $password = filter_input(INPUT_POST,'password');
+
+        if ($first_name == NULL || $last_name == NULL || $birthday == NULL || $email == NULL || $password == NULL) {
+            $error = "Fields cannot be blank";
+            include('errors/error.php');
+            header("Location: .?action=display_registration");
+        }
+
+        else {
+            $newUser = create_new_user($first_name, $last_name, $birthday, $email, $password );
+            header("Location: .?action=login");
+        }
+
+        break;
+    }
+
+    // Display user's questions, first and last name
+    case 'display_questions':
+    {
         $userId = filter_input(INPUT_GET, 'userId');
         $firstName = filter_input(INPUT_GET, 'fname');
         $lastName = filter_input(INPUT_GET, 'lname');
@@ -56,23 +89,48 @@ switch ($action) {
     }
 
 
-    case 'display_registration': {
-        include('views/registration.php');
+    case 'display_question_form':
+    {
+        $userId = filter_input(INPUT_GET, 'userId');
+        $firstName = filter_input(INPUT_GET, 'fname');
+        $lastName = filter_input(INPUT_GET, 'lname');
+        include('views/question_form.php');
         break;
     }
 
-
-
-
-    case 'display_question_form': {
+    //Receive question form data
+    case 'question_form_handler':
+    {
         $userId = filter_input(INPUT_GET, 'userId');
-        include('views/question_form.php');
-        break;
+        $firstName = filter_input(INPUT_GET, 'fname');
+        $lastName = filter_input(INPUT_GET, 'lname');
+
+        // Getting input data from users
+        $question_name = filter_input(INPUT_POST, 'question_name');
+        $question_body = filter_input(INPUT_POST, 'question_body');
+        $question_skills = filter_input(INPUT_POST, 'question_skills');
+
+        if ($question_name == NULL || $question_body == NULL || $question_skills == NULL) {
+            $error = "Email and Password not included.";
+            include('errors/error.php');
+        } else {
+            $newQuestion = create_question($question_name, $question_body, $question_skills);
+            $firstName = return_fname($email, $password);
+            $lastName = return_lname($email, $password);
+            echo "User ID IS: $userId";
+            if ($userId == false) {
+                header("Location: .?action=display_registration");
+            } else {
+                header("Location: .?action=display_questions&userId=$userId&fname=$firstName&lname=$lastName");
+            }
+        }
+
     }
 
     default: {
         $error = 'Unknown Action';
         include('errors/error.php');
     }
+
 
 }
