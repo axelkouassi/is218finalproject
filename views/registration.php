@@ -5,7 +5,7 @@
 
 
         <form action="index.php" method="post" id="registration_form" class ="form">
-            <input type="hidden" name="action" value="display_registration">
+            <input type="hidden" name="action" value="register">
 
             <h1 id="login_header">Registration Form</h1>
             <p style="color: red; ">* Required Fields</p><br>
