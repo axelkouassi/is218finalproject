@@ -64,13 +64,12 @@ function edit_question($questionID, $question_name, $question_body, $question_sk
 }
 
 // Delete a  question
-function delete_question($questionID, $userId) {
+function delete_question($questionID) {
     global $db;
     $query = 'DELETE FROM questions  
-              WHERE id = :questionID AND ownerid = :userId)';
+              WHERE id = :questionID';
     $statement = $db->prepare($query);
     $statement->bindValue(':questionID', $questionID);
-    $statement->bindValue(':userID', $userId);
     $statement->execute();
     $statement->closeCursor();
 }
