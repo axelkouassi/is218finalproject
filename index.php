@@ -62,12 +62,11 @@ switch ($action) {
         if ($first_name == NULL || $last_name == NULL || $birthday == NULL || $email == NULL || $password == NULL) {
             $error = "Fields cannot be blank";
             include('errors/error.php');
-            header("Location: .?action=display_registration");
         }
 
         else {
             $newUser = create_new_user($first_name, $last_name, $birthday, $email, $password );
-            header("Location: .?action=login");
+            header("Location: .?action=display_login");
         }
 
         break;
@@ -99,7 +98,7 @@ switch ($action) {
     }
 
     //Receive question form data
-    case 'question_form_handler':
+    case 'new_question':
     {
         $userId = filter_input(INPUT_GET, 'userId');
         $firstName = filter_input(INPUT_GET, 'fname');

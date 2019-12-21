@@ -35,7 +35,7 @@
     </div>
 
     <!-- Link to get to question form with additional data being sent about userID, first name and last name -->
-    <a href=".?action=display_question_form&userId=<?php echo $userId ?>">Add Questions</a><br><br>
+    <a href=".?action=display_question_form&userId=<?php echo $userId ?>&fname=<?php echo $firstName ?>&lname=<?php echo $lastName ?>">Add Questions</a><br><br>
 
 
 <?php include('abstract_views/footer.php'); ?>

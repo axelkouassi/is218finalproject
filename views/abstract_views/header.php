@@ -10,9 +10,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <!--Favicon-->
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://web.njit.edu/~ak659/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://web.njit.edu/~ak659/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://web.njit.edu/~ak659/favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
 
     <!--Website Title-->
@@ -32,9 +32,9 @@
 <div class="navbar">
     <nav id="nav_menu">
         <a href="https://web.njit.edu/~ak659/index.html">
-            <img src="images/logo1.jpg" alt = "Axel Kouassi Personal Logo" id = "logo"></a>
-        <a href="registration.php"class ="right_align">Register</a>
-        <a href="login.php" class ="right_align">Login</a>
+            <img src="https://web.njit.edu/~ak659/images/logo1.jpg" alt = "Axel Kouassi Personal Logo" id = "logo"></a>
+        <!--<a href="views/registration.php"class ="right_align">Register</a>
+        <a href="index.php" class ="right_align">Login</a> --> -->
     </nav>
 </div>
 <!-- Main Container -->
