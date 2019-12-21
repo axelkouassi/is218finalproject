@@ -35,11 +35,12 @@ function get_question($question_id) {
 }
 
 // Create question
-function create_question($question_name, $question_body, $question_skills) {
+function create_question($userId, $question_name, $question_body, $question_skills) {
     global $db;
-    $query = 'INSERT INTO questions (title, body, skills ) 
-              VALUES (:question_name, :question_body, :question_skills)';
+    $query = 'INSERT INTO questions (ownerid, title, body, skills ) 
+              VALUES (:ownerID, :question_name, :question_body, :question_skills)';
     $statement = $db->prepare($query);
+    $statement -> bindValue(':ownerID', $userId);
     $statement -> bindValue(':question_name', $question_name);
     $statement -> bindValue(':question_body', $question_body);
     $statement -> bindValue(':question_skills', $question_skills);
@@ -63,12 +64,13 @@ function edit_question($questionID, $question_name, $question_body, $question_sk
 }
 
 // Delete a  question
-function delete_question($questionID) {
+function delete_question($questionID, $userId) {
     global $db;
     $query = 'DELETE FROM questions  
-              WHERE id = :questionID)';
+              WHERE id = :questionID AND ownerid = :userId)';
     $statement = $db->prepare($query);
     $statement->bindValue(':questionID', $questionID);
+    $statement->bindValue(':userID', $userId);
     $statement->execute();
     $statement->closeCursor();
 }
