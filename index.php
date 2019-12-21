@@ -11,8 +11,10 @@ if ($action == NULL) {
     }
 }
 
-//Display login form login.php
+
 switch ($action) {
+
+    //Display login form login.php
     case 'display_login':
     {
         include('views/login.php');
@@ -20,7 +22,7 @@ switch ($action) {
     }
 
 
-    //Login credentials
+    //Login credentials validation
     case 'login':
     {
         $email = filter_input(INPUT_POST, 'email_address');
@@ -50,7 +52,7 @@ switch ($action) {
         break;
     }
 
-    //Register
+    //Registration form validation
     case 'register': {
         // Getting input data from users
         $first_name = filter_input(INPUT_POST,'first_name');
@@ -88,6 +90,7 @@ switch ($action) {
     }
 
 
+    //Display of question form
     case 'display_question_form':
     {
         $userId = filter_input(INPUT_GET, 'userId');
@@ -110,15 +113,13 @@ switch ($action) {
         $question_skills = filter_input(INPUT_POST, 'question_skills');
 
         if ($question_name == NULL || $question_body == NULL || $question_skills == NULL) {
-            $error = "Email and Password not included.";
+            $error = "Fields cannot be empty.";
             include('errors/error.php');
         } else {
             $newQuestion = create_question($question_name, $question_body, $question_skills);
-            $firstName = return_fname($email, $password);
-            $lastName = return_lname($email, $password);
             echo "User ID IS: $userId";
             if ($userId == false) {
-                header("Location: .?action=display_registration");
+                header("Location: .?action=display_login");
             } else {
                 header("Location: .?action=display_questions&userId=$userId&fname=$firstName&lname=$lastName");
             }

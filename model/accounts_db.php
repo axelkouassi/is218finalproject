@@ -36,8 +36,6 @@ function create_new_user($first_name, $last_name, $birthday, $email,$password ) 
     $statement -> bindValue(':password',$password);
     //Execute the SQL Query
     $statement->execute();
-    //Execute the SQL Query
-    $statement->execute();
     //Close the database connection
     $statement -> closeCursor();
 }

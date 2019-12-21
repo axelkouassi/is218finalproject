@@ -17,22 +17,6 @@ function get_user_questions($ownerId) {
 
 }
 
-//Get user's first name
-function get_user_first_name($ownerId) {
-    global $db;
-
-    $query = 'SELECT * FROM questions WHERE ownerId = :ownerId';
-
-    $statement = $db->prepare($query);
-
-    $statement->bindValue(':ownerId', $ownerId);
-    $statement->execute();
-
-    $questions = $statement->fetch();
-    $statement->closeCursor();
-    $firstName = $questions['fname'];
-    return $firstName;
-}
 
 // Get specific question
 function get_question($question_id) {
@@ -53,12 +37,9 @@ function get_question($question_id) {
 // Create question
 function create_question($question_name, $question_body, $question_skills) {
     global $db;
-
-    $query = 'INSERT INTO questions (ownerid, body, skills ) 
-              VALUES (question_name, :question_body, :question_skills)';
-
+    $query = 'INSERT INTO questions (title, body, skills ) 
+              VALUES (:question_name, :question_body, :question_skills)';
     $statement = $db->prepare($query);
-    
     $statement -> bindValue(':question_name', $question_name);
     $statement -> bindValue(':question_body', $question_body);
     $statement -> bindValue(':question_skills', $question_skills);
