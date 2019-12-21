@@ -51,15 +51,14 @@ function get_question($question_id) {
 }
 
 // Create question
-function create_question($owner_id, $question_name, $question_body, $question_skills) {
+function create_question($question_name, $question_body, $question_skills) {
     global $db;
 
     $query = 'INSERT INTO questions (ownerid, body, skills ) 
-              VALUES (:owner_id, :question_name, :question_body, :question_skills)';
+              VALUES (question_name, :question_body, :question_skills)';
 
     $statement = $db->prepare($query);
-
-    $statement->bindValue(':owner_id', $owner_id);
+    
     $statement -> bindValue(':question_name', $question_name);
     $statement -> bindValue(':question_body', $question_body);
     $statement -> bindValue(':question_skills', $question_skills);

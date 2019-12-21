@@ -23,9 +23,9 @@ function create_new_user($first_name, $last_name, $birthday, $email,$password ) 
     global $db;
     // SQL Query
     $query = 'INSERT INTO accounts
-          (email, fname, lname, birthday, password)
+          (fname, lname, birthday, email, password)
           VALUES
-          (:email, :fname, :lname, :birthday, :password)';
+          (:fname, :lname, :birthday, :email, :password)';
      //Create PDO Statement
      $statement = $db->prepare($query);
     //Bind Form Values to SQL
@@ -34,6 +34,8 @@ function create_new_user($first_name, $last_name, $birthday, $email,$password ) 
     $statement -> bindValue(':birthday',$birthday);
     $statement -> bindValue(':email',$email);
     $statement -> bindValue(':password',$password);
+    //Execute the SQL Query
+    $statement->execute();
     //Execute the SQL Query
     $statement->execute();
     //Close the database connection
