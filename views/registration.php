@@ -39,7 +39,7 @@
 
             <div id="login_button">
                 <label>&nbsp;</label>
-                <input type="submit" class="btn btn-default btn-block" value ="Register" name='action'><br>
+                <input type="submit" class="btn btn-default btn-block" value ="Register"><br>
             </div>
         </form>
     </main>
