@@ -27,7 +27,7 @@
                     <td><?php echo $question['title']; ?></td>
                     <td><?php echo $question['body']; ?></td>
                     <td><?php echo $question['skills']; ?></td>
-                    <td><form action=".?&userId=<?php echo $userId ?>&fname=<?php echo $firstName ?>&lname=<?php echo $lastName ?>" method="post">
+                    <td><form action="index.php?&userId=<?php echo $userId ?>&fname=<?php echo $firstName ?>&lname=<?php echo $lastName ?>" method="post">
                             <input type="hidden" name="action" value="delete_question">
                             <input type="hidden" name="question_id" value="<?php echo $question['id']; ?>">
                             <input type="hidden" name="userId" value="<?php echo $question['ownerid']; ?>">
