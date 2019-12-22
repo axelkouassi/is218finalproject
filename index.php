@@ -107,7 +107,7 @@ switch ($action) {
         break;
     }
 
-    //Display of question form
+    //Display edit question form
     case 'display_edit_question_form':
     {
         $userId = filter_input(INPUT_GET, 'userId');
