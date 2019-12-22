@@ -80,6 +80,7 @@ switch ($action) {
         $userId = filter_input(INPUT_GET, 'userId');
         $firstName = filter_input(INPUT_GET, 'fname');
         $lastName = filter_input(INPUT_GET, 'lname');
+
         if ($userId == NULL || $userId < 0) {
             header('Location: .?action=display_login');
         } else {
@@ -106,20 +107,55 @@ switch ($action) {
         break;
     }
 
-    // Delete user's questions, first and last name
-    case 'edit_question':{
+    //Display of question form
+    case 'display_edit_question_form':
+    {
         $userId = filter_input(INPUT_GET, 'userId');
         $firstName = filter_input(INPUT_GET, 'fname');
         $lastName = filter_input(INPUT_GET, 'lname');
 
+        $question_name = filter_input(INPUT_GET, 'question_name');
+        $question_body = filter_input(INPUT_GET, 'question_body');
+        $question_skills = filter_input(INPUT_GET, 'question_skills');
+
         $question_id = filter_input(INPUT_POST, 'question_id', FILTER_VALIDATE_INT);
+
         if ($question_id == NULL || $question_id == FALSE) {
             $error = "Missing or incorrect question id or user id.";
             include('errors/errors/error.php');
         } else {
-            edit_question($question_id);
-            header("Location: .?action=display_question_form&userId=$userId&fname=$firstName&lname=$lastName");
+            include('views/question_form_edit.php');
         }
+
+        break;
+    }
+
+
+    // Edit user's questions, first and last name
+    case 'edit_question':{
+        $userId = filter_input(INPUT_GET, 'userId');
+        $firstName = filter_input(INPUT_GET, 'fname');
+        $lastName = filter_input(INPUT_GET, 'lname');
+        $question_id = filter_input(INPUT_GET, 'question_id');
+
+        // Getting input data from users
+        $question_name = filter_input(INPUT_POST, 'question_name');
+        $question_body = filter_input(INPUT_POST, 'question_body');
+        $question_skills = filter_input(INPUT_POST, 'question_skills');
+
+        if ($question_name == NULL || $question_body == NULL || $question_skills == NULL) {
+            $error = "Fields cannot be empty.";
+            include('errors/error.php');
+        }
+        else if ($question_id == NULL || $question_id == FALSE) {
+            $error = "Missing or incorrect question id or user id.";
+            include('errors/errors/error.php');
+        }
+        else {
+            edit_question($question_id, $question_name, $question_body, $question_skills);
+            header("Location: .?action=display_questions&userId=$userId&fname=$firstName&lname=$lastName&question_id=$question_name");
+        }
+
         break;
     }
 
