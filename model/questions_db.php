@@ -53,7 +53,7 @@ function edit_question($questionID, $question_name, $question_body, $question_sk
     global $db;
     $query = 'UPDATE questions  
               SET title = :question_name, body = :question_body, skills = :question_skills
-              WHERE id = :questionID)';
+              WHERE id = :questionID';
     $statement = $db->prepare($query);
     $statement->bindValue(':questionID', $questionID);
     $statement -> bindValue(':question_name', $question_name);
