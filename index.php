@@ -120,6 +120,10 @@ switch ($action) {
 
         $question_id = filter_input(INPUT_POST, 'question_id', FILTER_VALIDATE_INT);
 
+        $question_name = filter_input(INPUT_POST, 'question_name');
+        $question_body = filter_input(INPUT_POST, 'question_body');
+        $question_skills = filter_input(INPUT_POST, 'question_skills');
+
         if ($question_id == NULL || $question_id == FALSE) {
             $error = "Missing or incorrect question id or user id.";
             include('errors/errors/error.php');

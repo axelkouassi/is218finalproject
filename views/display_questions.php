@@ -31,6 +31,9 @@
                             <input type="hidden" name="action" value="display_edit_question_form">
                             <input type="hidden" name="question_id" value="<?php echo $question['id']; ?>">
                             <input type="hidden" name="userId" value="<?php echo $question['ownerid']; ?>">
+                            <input type="hidden" name="question_name" value="<?php echo $question['title']; ?>">
+                            <input type="hidden" name="question_body" value="<?php echo $question['body']; ?>">
+                            <input type="hidden" name="question_skills" value="<?php echo $question['skills']; ?>">
                             <input type="submit" value="Edit">
                         </form>
                     </td>
