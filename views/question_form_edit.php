@@ -1,7 +1,7 @@
 <?php include('abstract_views/header.php'); ?>
 
     <main>
-        <form action="index.php?&userId=<?php echo $userId ?>&fname=<?php echo $firstName ?>&lname=<?php echo $lastName ?>&question_id=<?php echo $question['id'] ?>" method="post" class ="form">
+        <form action="index.php?&userId=<?php echo $userId ?>&fname=<?php echo $firstName ?>&lname=<?php echo $lastName ?>&question_id=<?php echo $question_id ?>" method="post" class ="form">
             <input type="hidden" name="action" value="edit_question">
 
             <h1>New Question Form</h1>
@@ -14,7 +14,7 @@
 
                 <div class="form-group">
                     <label for="question_body">Question Body</label><span style="color: red; ">*</span><br>
-                    <textarea type="text" name="question_body" value="<?php echo $question_body ?>" class="form-control" id="question_body" rows="5"></textarea>
+                    <textarea type="text" name="question_body" placeholder="<?php echo $question_body ?>" class="form-control" id="question_body" rows="5"></textarea>
                 </div><br>
 
                 <div class="form-group">
